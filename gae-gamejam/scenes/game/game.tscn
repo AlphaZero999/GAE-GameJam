@@ -1,3 +1,52 @@
-[gd_scene format=3 uid="uid://4kda0hh3krtd"]
+[gd_scene load_steps=5 format=3 uid="uid://4kda0hh3krtd"]
+
+[ext_resource type="Script" uid="uid://dr4yhxkntfpvm" path="res://scenes/game/game.gd" id="1_7h61r"]
+[ext_resource type="PackedScene" uid="uid://ds80oqt87s0qt" path="res://scenes/player/player.tscn" id="1_sul5r"]
+[ext_resource type="Texture2D" uid="uid://deg14rcmbdr8a" path="res://assets/yellow_arrow_empty.png" id="3_0sr1o"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0sr1o"]
+size = Vector2(20, 140)
 
 [node name="Game" type="Node"]
+script = ExtResource("1_7h61r")
+
+[node name="Player" parent="." instance=ExtResource("1_sul5r")]
+position = Vector2(0, -60)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="Arrows" type="Node2D" parent="."]
+position = Vector2(0, -60)
+
+[node name="ArrowLeft" type="Sprite2D" parent="Arrows"]
+position = Vector2(-60, 0)
+rotation = -1.5708
+texture = ExtResource("3_0sr1o")
+
+[node name="ArrowRight" type="Sprite2D" parent="Arrows"]
+position = Vector2(60, 0)
+rotation = 1.5708
+texture = ExtResource("3_0sr1o")
+
+[node name="ArrowUp" type="Sprite2D" parent="Arrows"]
+position = Vector2(0, -60)
+texture = ExtResource("3_0sr1o")
+
+[node name="ArrowDown" type="Sprite2D" parent="Arrows"]
+position = Vector2(0, 60)
+rotation = -3.14159
+texture = ExtResource("3_0sr1o")
+
+[node name="Pistols" type="Node2D" parent="."]
+position = Vector2(0, 110)
+
+[node name="PistolLeft" type="Sprite2D" parent="Pistols"]
+position = Vector2(-240, 0)
+rotation = 0.785398
+texture = SubResource("PlaceholderTexture2D_0sr1o")
+
+[node name="PistolRight" type="Sprite2D" parent="Pistols"]
+position = Vector2(240, 0)
+rotation = -0.785398
+texture = SubResource("PlaceholderTexture2D_0sr1o")
