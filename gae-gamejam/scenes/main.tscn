@@ -1,0 +1,64 @@
+[gd_scene load_steps=2 format=3 uid="uid://byhkn6vlecnxi"]
+
+[ext_resource type="Script" uid="uid://drlbs3yqf5thw" path="res://scenes/main.gd" id="1_o5qli"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_o5qli")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel"]
+layout_mode = 2
+offset_left = 453.0
+offset_top = 120.0
+offset_right = 573.0
+offset_bottom = 143.0
+grow_horizontal = 2
+scale = Vector2(2.13, 2.13)
+text = "Dodging Arthur"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -52.0
+offset_right = 75.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayButton" type="Button" parent="MarginContainer/Panel/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+text = "Play"
+
+[node name="OptionsButton" type="Button" parent="MarginContainer/Panel/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="MarginContainer/Panel/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="MarginContainer/Panel/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/HBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
