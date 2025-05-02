@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://cfvyhiunbdwtw"]
+
+[ext_resource type="Texture2D" uid="uid://deg14rcmbdr8a" path="res://assets/yellow_arrow_empty.png" id="1_8e2im"]
+[ext_resource type="Texture2D" uid="uid://ct2wtsnswb8nu" path="res://assets/yellow_arrow_filled.png" id="2_hp5o0"]
+[ext_resource type="Script" uid="uid://bq5c8sj1fsyhg" path="res://scenes/arrow/arrow.gd" id="3_hp5o0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yigju"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8e2im")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hp5o0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8e2im"]
+size = Vector2(10, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hp5o0"]
+size = Vector2(10, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yigju"]
+size = Vector2(10, 35)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjwy3"]
+size = Vector2(10, 10)
+
+[node name="Arrow" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_yigju")
+script = ExtResource("3_hp5o0")
+
+[node name="PerfectArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PerfectArea"]
+shape = SubResource("RectangleShape2D_8e2im")
+
+[node name="GoodArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoodArea"]
+shape = SubResource("RectangleShape2D_hp5o0")
+
+[node name="OkayArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OkayArea"]
+shape = SubResource("RectangleShape2D_yigju")
+
+[node name="MissArea" type="Area2D" parent="."]
+position = Vector2(0, 40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MissArea"]
+shape = SubResource("RectangleShape2D_bjwy3")
+
+[node name="PushTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="area_entered" from="PerfectArea" to="." method="_on_perfect_area_area_entered"]
+[connection signal="area_exited" from="PerfectArea" to="." method="_on_perfect_area_area_exited"]
+[connection signal="area_entered" from="GoodArea" to="." method="_on_good_area_area_entered"]
+[connection signal="area_exited" from="GoodArea" to="." method="_on_good_area_area_exited"]
+[connection signal="area_entered" from="OkayArea" to="." method="_on_okay_area_area_entered"]
+[connection signal="area_exited" from="OkayArea" to="." method="_on_okay_area_area_exited"]
+[connection signal="area_entered" from="MissArea" to="." method="_on_miss_area_area_entered"]
+[connection signal="timeout" from="PushTimer" to="." method="_on_push_timer_timeout"]

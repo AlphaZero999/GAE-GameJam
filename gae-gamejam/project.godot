@@ -15,6 +15,14 @@ run/main_scene="uid://byhkn6vlecnxi"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ConductorVariables="*res://Globals/conductor_variables.gd"
+
+[global_group]
+
+note=""
+
 [input]
 
 dodge_left={

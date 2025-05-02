@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://b78ekg0u4sfg8"]
+
+[ext_resource type="Script" uid="uid://ctmjdxx12kame" path="res://scenes/note/note.gd" id="1_wbc10"]
+[ext_resource type="Texture2D" uid="uid://clun5nvt1ncru" path="res://assets/small_arrow_left.png" id="2_k2mhf"]
+[ext_resource type="Texture2D" uid="uid://chgrvc4mm7oev" path="res://assets/small_arrow_right.png" id="3_r3yrw"]
+[ext_resource type="Texture2D" uid="uid://cws5s0wfjy5wm" path="res://assets/small_arrow_up.png" id="4_jq368"]
+[ext_resource type="Texture2D" uid="uid://ba0ksfathbbp3" path="res://assets/small_arrow_down.png" id="5_q2g3p"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cge7e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_k2mhf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_r3yrw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jq368")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_q2g3p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_505v3"]
+size = Vector2(10, 10)
+
+[node name="Note" type="Area2D" groups=["note"]]
+script = ExtResource("1_wbc10")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cge7e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_505v3")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 16
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.8
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+linear_accel_min = -100.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="Node2D"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

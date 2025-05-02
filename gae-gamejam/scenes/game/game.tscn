@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://4kda0hh3krtd"]
+[gd_scene load_steps=7 format=3 uid="uid://4kda0hh3krtd"]
 
 [ext_resource type="Script" uid="uid://dr4yhxkntfpvm" path="res://scenes/game/game.gd" id="1_7h61r"]
 [ext_resource type="PackedScene" uid="uid://ds80oqt87s0qt" path="res://scenes/player/player.tscn" id="1_sul5r"]
-[ext_resource type="Texture2D" uid="uid://deg14rcmbdr8a" path="res://assets/yellow_arrow_empty.png" id="3_0sr1o"]
+[ext_resource type="PackedScene" uid="uid://cfvyhiunbdwtw" path="res://scenes/arrow/arrow.tscn" id="3_kelw5"]
+[ext_resource type="PackedScene" uid="uid://ciunrdwh6ohpj" path="res://scenes/conductor/conductor.tscn" id="4_kelw5"]
+[ext_resource type="AudioStream" uid="uid://bt5q71jxwuvmr" path="res://assets/noodles.mp3" id="5_lfrn8"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0sr1o"]
 size = Vector2(20, 140)
@@ -11,32 +13,48 @@ size = Vector2(20, 140)
 script = ExtResource("1_7h61r")
 
 [node name="Player" parent="." instance=ExtResource("1_sul5r")]
-position = Vector2(0, -60)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
-[node name="Arrows" type="Node2D" parent="."]
-position = Vector2(0, -60)
+[node name="PlayArea" type="Node2D" parent="."]
 
-[node name="ArrowLeft" type="Sprite2D" parent="Arrows"]
+[node name="ArrowLeft" parent="PlayArea" instance=ExtResource("3_kelw5")]
 position = Vector2(-60, 0)
 rotation = -1.5708
-texture = ExtResource("3_0sr1o")
+input = "dodge_left"
 
-[node name="ArrowRight" type="Sprite2D" parent="Arrows"]
+[node name="ArrowRight" parent="PlayArea" instance=ExtResource("3_kelw5")]
 position = Vector2(60, 0)
 rotation = 1.5708
-texture = ExtResource("3_0sr1o")
+input = "dodge_right"
 
-[node name="ArrowUp" type="Sprite2D" parent="Arrows"]
+[node name="ArrowUp" parent="PlayArea" instance=ExtResource("3_kelw5")]
 position = Vector2(0, -60)
-texture = ExtResource("3_0sr1o")
+input = "dodge_up"
 
-[node name="ArrowDown" type="Sprite2D" parent="Arrows"]
+[node name="ArrowDown" parent="PlayArea" instance=ExtResource("3_kelw5")]
 position = Vector2(0, 60)
-rotation = -3.14159
-texture = ExtResource("3_0sr1o")
+rotation = 3.14159
+input = "dodge_down"
+
+[node name="Spawns" type="Node2D" parent="PlayArea"]
+
+[node name="SpawnLeft" type="Node2D" parent="PlayArea/Spawns"]
+unique_name_in_owner = true
+position = Vector2(-150, 0)
+
+[node name="SpawnRight" type="Node2D" parent="PlayArea/Spawns"]
+unique_name_in_owner = true
+position = Vector2(150, 0)
+
+[node name="SpawnUp" type="Node2D" parent="PlayArea/Spawns"]
+unique_name_in_owner = true
+position = Vector2(0, -150)
+
+[node name="SpawnDown" type="Node2D" parent="PlayArea/Spawns"]
+unique_name_in_owner = true
+position = Vector2(0, 150)
 
 [node name="Pistols" type="Node2D" parent="."]
 position = Vector2(0, 110)
@@ -50,3 +68,22 @@ texture = SubResource("PlaceholderTexture2D_0sr1o")
 position = Vector2(240, 0)
 rotation = -0.785398
 texture = SubResource("PlaceholderTexture2D_0sr1o")
+
+[node name="Conductor" parent="." instance=ExtResource("4_kelw5")]
+stream = ExtResource("5_lfrn8")
+volume_db = -14.991
+bpm = 87
+
+[node name="Label" type="Label" parent="."]
+offset_left = -273.0
+offset_top = -148.0
+offset_right = -233.0
+offset_bottom = -125.0
+text = "0"
+
+[node name="Combo" type="Label" parent="."]
+offset_left = -272.0
+offset_top = -115.0
+offset_right = -232.0
+offset_bottom = -92.0
+text = "0"
