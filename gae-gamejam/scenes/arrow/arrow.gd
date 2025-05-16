@@ -26,6 +26,7 @@ func _unhandled_input(event: InputEvent) -> void:
 					current_note.destroy(1)
 				_reset()
 			else:
+				#pass
 				get_parent().get_parent().increment_score(0) #To reset combo
 				#current_note.destroy(0)
 		if event.is_action_pressed(input):

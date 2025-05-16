@@ -121,18 +121,18 @@ func _on_Conductor_beat(position):
 		ConductorVariables.good = good
 		ConductorVariables.okay = okay
 		ConductorVariables.missed = missed
-		if get_tree().change_scene("res://Scenes/End.tscn") != OK:
+		if get_tree().change_scene("res://scenes/end/end.tscn") != OK:
 			print ("Error changing scene to End")
 
 
 func _spawn_notes(to_spawn):
 	if to_spawn > 0:
-		direction = rng.randi_range(0, 4)
+		direction = rng.randi_range(0, 3)
 		instance = note.instantiate()
 		init_note(direction)
 	if to_spawn > 1:
 		while rand == direction:
-			rand = rng.randi_range(0, 4)
+			rand = rng.randi_range(0, 3)
 		direction = rand
 		instance = note.instantiate()
 		init_note(direction)

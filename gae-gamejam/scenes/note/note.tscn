@@ -27,7 +27,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_505v3"]
-size = Vector2(10, 10)
+size = Vector2(1, 10)
 
 [node name="Note" type="Area2D" groups=["note"]]
 script = ExtResource("1_wbc10")
@@ -53,7 +53,7 @@ initial_velocity_max = 100.0
 linear_accel_min = -100.0
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.1
 
 [node name="Node2D" type="Node2D" parent="."]
 

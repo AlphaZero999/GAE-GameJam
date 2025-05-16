@@ -37,7 +37,7 @@ func initialize(_direction: Vector2):
 		printerr("Invalid note initialization: " + str(_direction))
 		return
 	#dist_to_target = _spawn_point
-	speed = dist_to_target / 1.0
+	speed = dist_to_target
 
 
 func destroy(score):

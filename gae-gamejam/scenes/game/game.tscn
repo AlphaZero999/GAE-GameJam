@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ds80oqt87s0qt" path="res://scenes/player/player.tscn" id="1_sul5r"]
 [ext_resource type="PackedScene" uid="uid://cfvyhiunbdwtw" path="res://scenes/arrow/arrow.tscn" id="3_kelw5"]
 [ext_resource type="PackedScene" uid="uid://ciunrdwh6ohpj" path="res://scenes/conductor/conductor.tscn" id="4_kelw5"]
-[ext_resource type="AudioStream" uid="uid://bt5q71jxwuvmr" path="res://assets/noodles.mp3" id="5_lfrn8"]
+[ext_resource type="AudioStream" uid="uid://bh0nuvm515sbv" path="res://assets/song.ogg" id="5_lfrn8"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0sr1o"]
 size = Vector2(20, 140)
@@ -72,7 +72,7 @@ texture = SubResource("PlaceholderTexture2D_0sr1o")
 [node name="Conductor" parent="." instance=ExtResource("4_kelw5")]
 stream = ExtResource("5_lfrn8")
 volume_db = -14.991
-bpm = 87
+bpm = 115
 
 [node name="Label" type="Label" parent="."]
 offset_left = -273.0

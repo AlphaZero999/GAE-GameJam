@@ -57,6 +57,7 @@ shape = SubResource("RectangleShape2D_bjwy3")
 
 [node name="PushTimer" type="Timer" parent="."]
 wait_time = 0.1
+one_shot = true
 
 [connection signal="area_entered" from="PerfectArea" to="." method="_on_perfect_area_area_entered"]
 [connection signal="area_exited" from="PerfectArea" to="." method="_on_perfect_area_area_exited"]
