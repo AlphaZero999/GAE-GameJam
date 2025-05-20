@@ -2,6 +2,8 @@ extends AnimatedSprite2D
 
 @onready var push_timer: Timer = $PushTimer
 
+signal arrow_hit
+
 ## dodge_left, dodge_right, dodge_up, dodge_down
 @export var input = ""
 
@@ -10,6 +12,10 @@ var good = false
 var okay = false
 var missed = false
 var current_note = null
+
+func _process(delta: float) -> void:
+	pass
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action(input):
@@ -37,6 +43,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_perfect_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("note"):
+		arrow_hit.emit()
 		perfect = true
 		#print("Hit Perfect")
 

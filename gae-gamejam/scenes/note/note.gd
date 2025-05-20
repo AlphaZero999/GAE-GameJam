@@ -1,9 +1,9 @@
 extends Area2D
 
-var dist_to_target = 150
+var dist_to_target = 90
 var direction: Vector2
 
-var speed = 0
+var speed = 1
 var hit = false
 
 var destroy_threshold = 200
@@ -15,12 +15,12 @@ func _ready():
 
 func _physics_process(delta):
 	if !hit:
-		position -= speed * delta * direction
+		position -= speed * dist_to_target * delta * direction
 		if position.length() > destroy_threshold:
 			queue_free()
 			get_parent().reset_combo()
 	else:
-		$Node2D.position += speed * delta * direction
+		$Node2D.position += speed * dist_to_target * delta * direction
 
 
 func initialize(_direction: Vector2):
@@ -37,7 +37,7 @@ func initialize(_direction: Vector2):
 		printerr("Invalid note initialization: " + str(_direction))
 		return
 	#dist_to_target = _spawn_point
-	speed = dist_to_target
+	#speed = dist_to_target
 
 
 func destroy(score):
