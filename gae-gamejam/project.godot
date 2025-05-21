@@ -22,6 +22,8 @@ ConductorVariables="*res://Globals/conductor_variables.gd"
 [display]
 
 window/size/viewport_height=812
+window/size/mode=4
+window/stretch/mode="viewport"
 
 [global_group]
 

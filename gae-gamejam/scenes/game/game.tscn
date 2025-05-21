@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://4kda0hh3krtd"]
+[gd_scene load_steps=12 format=3 uid="uid://4kda0hh3krtd"]
 
 [ext_resource type="Script" uid="uid://dr4yhxkntfpvm" path="res://scenes/game/game.gd" id="1_7h61r"]
 [ext_resource type="PackedScene" uid="uid://ds80oqt87s0qt" path="res://scenes/player/player.tscn" id="1_sul5r"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://ciunrdwh6ohpj" path="res://scenes/conductor/conductor.tscn" id="4_kelw5"]
 [ext_resource type="AudioStream" uid="uid://xcv1yl5ttrmu" path="res://assets/music-1.mp3" id="7_4j704"]
 [ext_resource type="Shader" uid="uid://pdx7gb7rbsqx" path="res://shader/god_ray.gdshader" id="7_bdhmt"]
-[ext_resource type="AudioStream" uid="uid://ctbmv7d2um657" path="res://assets/275151__bird_man__gun-shot.wav" id="9_2a8rs"]
 [ext_resource type="Texture2D" uid="uid://cu456uogftj8q" path="res://assets/bg.png" id="10_4j704"]
 [ext_resource type="Theme" uid="uid://xgqdkyh4d4iy" path="res://theme.tres" id="11_kp23o"]
 
@@ -116,10 +115,6 @@ offset_right = 311.0
 offset_bottom = 207.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_2a8rs")
-volume_db = -21.99
 
 [node name="Bg" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.501961)
