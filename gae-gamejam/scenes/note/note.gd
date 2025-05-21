@@ -1,6 +1,6 @@
 extends Area2D
 
-var dist_to_target = 90
+var dist_to_target = 120
 var direction: Vector2
 
 var speed = 1

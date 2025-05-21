@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 ConductorVariables="*res://Globals/conductor_variables.gd"
 
+[display]
+
+window/size/viewport_height=812
+
 [global_group]
 
 note=""

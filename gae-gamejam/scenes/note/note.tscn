@@ -33,6 +33,7 @@ size = Vector2(1, 10)
 script = ExtResource("1_wbc10")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_cge7e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -40,9 +41,10 @@ shape = SubResource("RectangleShape2D_505v3")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false
-amount = 16
-lifetime = 0.3
+amount = 64
+lifetime = 0.62
 one_shot = true
+speed_scale = 1.65
 explosiveness = 0.8
 emission_shape = 1
 emission_sphere_radius = 1.0
@@ -51,6 +53,7 @@ gravity = Vector2(0, 0)
 initial_velocity_min = 100.0
 initial_velocity_max = 100.0
 linear_accel_min = -100.0
+color = Color(0.866667, 0.431373, 0.0862745, 1)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1

@@ -19,18 +19,19 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8e2im"]
-size = Vector2(10, 5)
+size = Vector2(10, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hp5o0"]
 size = Vector2(10, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yigju"]
-size = Vector2(10, 35)
+size = Vector2(10, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjwy3"]
 size = Vector2(10, 10)
 
 [node name="Arrow" type="AnimatedSprite2D"]
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_yigju")
 script = ExtResource("3_hp5o0")
 

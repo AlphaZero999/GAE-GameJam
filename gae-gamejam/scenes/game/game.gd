@@ -15,6 +15,9 @@ extends Node
 
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
+@onready var score_label: Label = %ScoreLabel
+@onready var combo_label: Label = %ComboLabel
+
 
 
 var score = 0
@@ -35,7 +38,7 @@ var sec_per_beat = 60.0 / bpm
 
 var spawn_1_beat = 0
 var spawn_2_beat = 0
-var spawn_3_beat = 1
+var spawn_3_beat = 0
 var spawn_4_beat = 0
 
 var spawn_point
@@ -54,7 +57,7 @@ func _ready() -> void:
 	arrow_up.connect("arrow_hit", shoot_pistol)
 	
 	conductor.play_with_beats_offset(4)
-	#conductor.play_from_beat(150, 8)
+	#conductor.play_from_beat(36, 4)
 	
 	ConductorVariables.connect("beat", _on_Conductor_beat)
 	ConductorVariables.connect("measure", _on_Conductor_measure)
@@ -77,71 +80,71 @@ func _on_Conductor_measure(position):
 
 
 func _on_Conductor_beat(position):
+	print(position)
 	song_position_in_beats = position
-	print(song_position_in_beats)
-	if song_position_in_beats > 36:
-		spawn_1_beat = 1
-		spawn_2_beat = 1
-		spawn_3_beat = 1
-		spawn_4_beat = 1
-	if song_position_in_beats > 98:
-		spawn_1_beat = 1
-		spawn_2_beat = 1
-		spawn_3_beat = 1
-		spawn_4_beat = 1
-	if song_position_in_beats > 132:
-		spawn_1_beat = 1
-		spawn_2_beat = 1
-		spawn_3_beat = 1
-		spawn_4_beat = 1
-	if song_position_in_beats > 162:
-		spawn_1_beat = 2
-		spawn_2_beat = 2
-		spawn_3_beat = 1
-		spawn_4_beat = 1
-	if song_position_in_beats > 194:
-		spawn_1_beat = 2
-		spawn_2_beat = 2
-		spawn_3_beat = 1
-		spawn_4_beat = 2
-	if song_position_in_beats > 228:
-		spawn_1_beat = 0
-		spawn_2_beat = 2
-		spawn_3_beat = 1
-		spawn_4_beat = 2
-	if song_position_in_beats > 258:
-		spawn_1_beat = 1
-		spawn_2_beat = 2
-		spawn_3_beat = 1
-		spawn_4_beat = 2
-	if song_position_in_beats > 288:
-		spawn_1_beat = 0
-		spawn_2_beat = 2
-		spawn_3_beat = 0
-		spawn_4_beat = 2
-	if song_position_in_beats > 322:
-		spawn_1_beat = 3
-		spawn_2_beat = 2
-		spawn_3_beat = 2
-		spawn_4_beat = 1
-	if song_position_in_beats > 388:
+	if song_position_in_beats > 8:
 		spawn_1_beat = 1
 		spawn_2_beat = 0
 		spawn_3_beat = 0
 		spawn_4_beat = 0
-	if song_position_in_beats > 396:
+	if song_position_in_beats > 32:
+		spawn_1_beat = 1
+		spawn_2_beat = 0
+		spawn_3_beat = 1
+		spawn_4_beat = 0
+	if song_position_in_beats > 48:
+		spawn_1_beat = 1
+		spawn_2_beat = 1
+		spawn_3_beat = 1
+		spawn_4_beat = 0
+	if song_position_in_beats > 52:
+		spawn_1_beat = 1
+		spawn_2_beat = 0
+		spawn_3_beat = 1
+		spawn_4_beat = 0
+	if song_position_in_beats > 56:
+		spawn_1_beat = 1
+		spawn_2_beat = 1
+		spawn_3_beat = 1
+		spawn_4_beat = 0
+	if song_position_in_beats > 60:
+		spawn_1_beat = 1
+		spawn_2_beat = 0
+		spawn_3_beat = 1
+		spawn_4_beat = 0
+	if song_position_in_beats > 66:
+		spawn_1_beat = 1
+		spawn_2_beat = 1
+		spawn_3_beat = 1
+		spawn_4_beat = 1
+	if song_position_in_beats > 82:
+		spawn_1_beat = 1
+		spawn_2_beat = 0
+		spawn_3_beat = 1
+		spawn_4_beat = 1
+	if song_position_in_beats > 88:
+		spawn_1_beat = 0
+		spawn_2_beat = 1
+		spawn_3_beat = 0
+		spawn_4_beat = 1
+	if song_position_in_beats > 96:
+		spawn_1_beat = 1
+		spawn_2_beat = 1
+		spawn_3_beat = 1
+		spawn_4_beat = 1
+	if song_position_in_beats > 109:
 		spawn_1_beat = 0
 		spawn_2_beat = 0
 		spawn_3_beat = 0
 		spawn_4_beat = 0
-	if song_position_in_beats > 404:
+	if song_position_in_beats > 114:
 		ConductorVariables.set_score(score)
 		ConductorVariables.combo = max_combo
 		ConductorVariables.great = great
 		ConductorVariables.good = good
 		ConductorVariables.okay = okay
 		ConductorVariables.missed = missed
-		if get_tree().change_scene("res://scenes/end/end.tscn") != OK:
+		if get_tree().change_scene_to_file("res://scenes/end/end.tscn") != OK:
 			print ("Error changing scene to End")
 
 
@@ -194,15 +197,15 @@ func increment_score(by):
 	
 	
 	score += by * combo
-	$Label.text = str(score)
+	score_label.text = str(score)
 	if combo > 0:
-		$Combo.text = str(combo) + " combo!"
+		combo_label.text = "X " + str(combo)
 		if combo > max_combo:
 			max_combo = combo
 	else:
-		$Combo.text = ""
+		combo_label.text = "X 0"
 
 
 func reset_combo():
 	combo = 0
-	$Combo.text = "0"
+	combo_label.text = "X 0"

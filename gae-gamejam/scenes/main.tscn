@@ -1,9 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://byhkn6vlecnxi"]
+[gd_scene load_steps=4 format=3 uid="uid://byhkn6vlecnxi"]
 
 [ext_resource type="Script" uid="uid://drlbs3yqf5thw" path="res://scenes/main.gd" id="1_o5qli"]
+[ext_resource type="Theme" uid="uid://xgqdkyh4d4iy" path="res://theme.tres" id="2_0wfyh"]
+[ext_resource type="Texture2D" uid="uid://cu456uogftj8q" path="res://assets/bg.png" id="2_sugp2"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_o5qli")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576.5, 407.5)
+scale = Vector2(18.2031, 19.6905)
+texture = ExtResource("2_sugp2")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 274.0
+offset_top = 180.0
+offset_right = 880.0
+offset_bottom = 245.0
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -296.505
+offset_top = -225.995
+offset_right = -98.505
+offset_bottom = -205.995
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("2_0wfyh")
+text = "Dodging Michael"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -12,53 +45,57 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+visible = false
 layout_mode = 2
+color = Color(0.0392157, 0.741176, 0.776471, 1)
 
-[node name="Label" type="Label" parent="MarginContainer/Panel"]
+[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-offset_left = 453.0
-offset_top = 120.0
-offset_right = 573.0
-offset_bottom = 143.0
-grow_horizontal = 2
-scale = Vector2(2.13, 2.13)
-text = "Dodging Michael"
-horizontal_alignment = 1
-vertical_alignment = 1
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
 
-[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel"]
-layout_mode = 1
+[node name="PlayButton" type="Button" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 50)
+layout_mode = 2
+theme = ExtResource("2_0wfyh")
+text = "Play"
+
+[node name="OptionsButton" type="Button" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme = ExtResource("2_0wfyh")
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme = ExtResource("2_0wfyh")
+text = "Quit"
+
+[node name="Label2" type="Label" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -52.0
-offset_right = 75.0
-offset_bottom = 52.0
+offset_left = -119.5
+offset_top = 131.07
+offset_right = 119.5
+offset_bottom = 174.07
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_0wfyh")
+text = "Game by Mark_Senna
+for GAE Jam
+Everything made by myself"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="PlayButton" type="Button" parent="MarginContainer/Panel/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 50)
-layout_mode = 2
-text = "Play"
-
-[node name="OptionsButton" type="Button" parent="MarginContainer/Panel/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 50)
-layout_mode = 2
-text = "Options"
-
-[node name="QuitButton" type="Button" parent="MarginContainer/Panel/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 50)
-layout_mode = 2
-text = "Quit"
-
-[connection signal="pressed" from="MarginContainer/Panel/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="MarginContainer/Panel/HBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="MarginContainer/Panel/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
