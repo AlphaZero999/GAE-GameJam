@@ -13,8 +13,6 @@ extends Node
 
 @onready var pistols: Node2D = $Pistols
 
-@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
-
 @onready var score_label: Label = %ScoreLabel
 @onready var combo_label: Label = %ComboLabel
 
@@ -144,6 +142,8 @@ func _on_Conductor_beat(position):
 		ConductorVariables.good = good
 		ConductorVariables.okay = okay
 		ConductorVariables.missed = missed
+		if ConductorVariables.highscore < score:
+			ConductorVariables.highscore = score
 		if get_tree().change_scene_to_file("res://scenes/end/end.tscn") != OK:
 			print ("Error changing scene to End")
 

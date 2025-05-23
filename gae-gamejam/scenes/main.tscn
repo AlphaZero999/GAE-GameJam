@@ -1,8 +1,42 @@
-[gd_scene load_steps=4 format=3 uid="uid://byhkn6vlecnxi"]
+[gd_scene load_steps=8 format=3 uid="uid://byhkn6vlecnxi"]
 
 [ext_resource type="Script" uid="uid://drlbs3yqf5thw" path="res://scenes/main.gd" id="1_o5qli"]
 [ext_resource type="Theme" uid="uid://xgqdkyh4d4iy" path="res://theme.tres" id="2_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://cu456uogftj8q" path="res://assets/bg.png" id="2_sugp2"]
+[ext_resource type="Shader" uid="uid://b6ylfgi5favb" path="res://shader/highlight.gdshader" id="4_jyhfs"]
+[ext_resource type="Shader" uid="uid://bid1dxp6phv0d" path="res://shader/beams.gdshader" id="5_tbgi4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tefeu"]
+shader = ExtResource("5_tbgi4")
+shader_parameter/beams = 2
+shader_parameter/energy = 3.0
+shader_parameter/roughness = 3
+shader_parameter/frequency = 10
+shader_parameter/speed = 0.7
+shader_parameter/thickness = 0.075
+shader_parameter/outline_thickness = 0.075
+shader_parameter/beam_difference = 0.0
+shader_parameter/glow = 0.438
+shader_parameter/outline_glow = 0.0
+shader_parameter/color = Vector4(0.91, 1, 1, 1)
+shader_parameter/outline_color = Vector4(0.5, 1.05, 0.96, 1)
+shader_parameter/progress = 1.0
+shader_parameter/y_offset = 0.0
+shader_parameter/fixed_edge_size = 0.05
+shader_parameter/noise_scale = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tbgi4"]
+shader = ExtResource("4_jyhfs")
+shader_parameter/Line_Smoothness = 0.045
+shader_parameter/Line_Width = 0.102
+shader_parameter/Brightness = 0.64
+shader_parameter/Rotation_deg = 13.82
+shader_parameter/Distortion = 1.676
+shader_parameter/Speed = 0.455
+shader_parameter/Position = 0.0
+shader_parameter/Position_Min = 0.25
+shader_parameter/Position_Max = 0.5
+shader_parameter/Alpha = 1.0
 
 [node name="Main" type="Node"]
 script = ExtResource("1_o5qli")
@@ -12,11 +46,36 @@ position = Vector2(576.5, 407.5)
 scale = Vector2(18.2031, 19.6905)
 texture = ExtResource("2_sugp2")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_tefeu")
+custom_minimum_size = Vector2(1000, 100)
+offset_left = 98.0
+offset_top = 847.151
+offset_right = 1098.0
+offset_bottom = 947.151
+rotation = -1.17881
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_tefeu")
+custom_minimum_size = Vector2(1000, 100)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 102.0
+offset_top = -881.849
+offset_right = 1102.0
+offset_bottom = -781.849
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 1.1781
+
 [node name="Panel" type="Panel" parent="."]
-offset_left = 274.0
-offset_top = 180.0
-offset_right = 880.0
-offset_bottom = 245.0
+offset_left = 271.0
+offset_top = 163.0
+offset_right = 877.0
+offset_bottom = 228.0
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 8
@@ -24,16 +83,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -296.505
-offset_top = -225.995
-offset_right = -98.505
-offset_bottom = -205.995
+offset_left = -298.335
+offset_top = -242.0
+offset_right = -100.335
+offset_bottom = -222.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme = ExtResource("2_0wfyh")
+theme_override_colors/font_color = Color(1, 0.94902, 0, 1)
 text = "Dodging Michael"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -63,6 +123,16 @@ layout_mode = 2
 theme = ExtResource("2_0wfyh")
 text = "Play"
 
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/PlayButton"]
+material = SubResource("ShaderMaterial_tbgi4")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [node name="OptionsButton" type="Button" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 50)
@@ -70,12 +140,32 @@ layout_mode = 2
 theme = ExtResource("2_0wfyh")
 text = "Options"
 
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/OptionsButton"]
+material = SubResource("ShaderMaterial_tbgi4")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [node name="QuitButton" type="Button" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 theme = ExtResource("2_0wfyh")
 text = "Quit"
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/QuitButton"]
+material = SubResource("ShaderMaterial_tbgi4")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="Label2" type="Label" parent="."]
 anchors_preset = 8
@@ -91,8 +181,24 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_0wfyh")
 text = "Game by Mark_Senna
-for GAE Jam
-Everything made by myself"
+for GAE Jam 25"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HighscoreLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.0
+offset_top = 213.0
+offset_right = 121.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_0wfyh")
+text = "Highscore: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 

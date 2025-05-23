@@ -3,6 +3,7 @@ extends Node
 signal beat
 signal measure
 
+var highscore = 0
 var score = 0
 var combo = 0
 var great = 0
